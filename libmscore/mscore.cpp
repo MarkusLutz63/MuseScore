@@ -194,6 +194,30 @@ void MScore::init()
       _defaultStyleForParts = 0;
       _baseStyle            = new MStyle(*_defaultStyle);
 
+      QString mscoreTabPath1;
+      const char *mscoreTabPath;
+      mscoreTabPath1 = "/home/markus/.musescore/fonts/mscoreTab.ttf";
+/*
+      QString wd = QString("%1/%2").arg(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)).arg(QCoreApplication::applicationName());
+      QString mscoreTabPath1 = QFileInfo(QString("%1/%2").arg(wd).arg(QCoreApplication::translate("fonts_directory", "Fonts"))).absoluteFilePath() + "/mscoreTab.ttf";
+*/
+      QFileInfo check_file (mscoreTabPath1);
+      if (check_file.exists()) {
+//            QByteArray ba = mscoreTabPath1.toLocal8Bit();
+//            mscoreTabPath = ba.data();
+//            mscoreTabPath = qPrintable(mscoreTabPath1.toLocal8Bit().constData());
+//            qDebug("mscore.cpp: print path: mscoreTabPath = <%s>", qPrintable(mscoreTabPath));
+//            mscoreTabPath = qPrintable(mscoreTabPath1);
+            mscoreTabPath = "/home/markus/.musescore/fonts/mscoreTab.ttf";
+      }
+      else {
+            mscoreTabPath = ":/fonts/mscoreTab.ttf";
+      }
+/*            qDebug("mscore.cpp: print path: mscoreTabPath_help = <%s>", qPrintable(mscoreTabPath_help));
+            }
+      else strcpy(mscoreTabPath_help,":/fonts/mscoreTab.ttf");
+      const char * mscoreTabPath = mscoreTabPath_help;
+*/
       //
       //  load internal fonts
       //
@@ -209,7 +233,7 @@ void MScore::init()
             ":/fonts/FreeSerifBold.ttf",
             ":/fonts/FreeSerifItalic.ttf",
             ":/fonts/FreeSerifBoldItalic.ttf",
-            ":/fonts/mscoreTab.ttf",
+            mscoreTabPath,
             ":/fonts/mscore-BC.ttf",
             ":/fonts/bravura/BravuraText.otf",
             ":/fonts/gootville/GootvilleText.otf",
