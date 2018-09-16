@@ -1382,6 +1382,12 @@ std::vector<StaffType> StaffType::_presets;
 void StaffType::initStaffTypes()
       {
       readConfigFile(0);          // get TAB font config, before initStaffTypes()
+      QString wd      = QString("%1/%2").arg(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)).arg(QCoreApplication::applicationName());
+      QString fileName = QFileInfo(QString("%1/%2").arg(wd).arg(QCoreApplication::translate("fonts_directory", "Fonts"))).absoluteFilePath() + "/fonts_tablature.xml";
+      QFileInfo check_file (fileName);
+      fileName = check_file.exists() ? fileName : "";
+      readConfigFile(fileName);          // get TAB font config, before 
+initStaffTypes()
 
       // keep in sync with enum class StaffTypes
       _presets = {
