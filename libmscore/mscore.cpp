@@ -323,16 +323,18 @@ void MScore::init()
                   }
             }
 
-      char mscoreTabPath_help[100];
+//      const char mscoreTabPath[100];
+//      mscoreTabPath = '/home/markus/.musescore/fonts/mscoreTab.ttf';
+/*
       QString wd = QString("%1/%2").arg(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)).arg(QCoreApplication::applicationName());
       QString mscoreTabPath1 = QFileInfo(QString("%1/%2").arg(wd).arg(QCoreApplication::translate("fonts_directory", "Fonts"))).absoluteFilePath() + "/mscoreTab.ttf";
       QFileInfo check_file (mscoreTabPath1);
       if (check_file.exists()) {
-            strcpy(mscoreTabPath_help,mscoreTabPath1.toAscii().constData());
+            strcpy(mscoreTabPath_help,mscoreTabPath1.toLatin1().constData());
             }
       else strcpy(mscoreTabPath_help,":/fonts/mscoreTab.ttf");
       const char * mscoreTabPath= mscoreTabPath_help;
-
+*/
       //
       //  load internal fonts
       //
@@ -348,7 +350,7 @@ void MScore::init()
             ":/fonts/FreeSerifBold.ttf",
             ":/fonts/FreeSerifItalic.ttf",
             ":/fonts/FreeSerifBoldItalic.ttf",
-            mscoreTabPath,
+            "/home/markus/.musescore/fonts/mscoreTab.ttf",
             ":/fonts/mscore-BC.ttf",
             ":/fonts/bravura/BravuraText.otf",
             ":/fonts/gootville/GootvilleText.otf",
